@@ -13,6 +13,16 @@
         body > *:not(#video-section) {
             display: none;
         }
+        #sprite-plyr[hidden] {
+  position: fixed !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
