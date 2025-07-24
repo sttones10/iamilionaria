@@ -13,6 +13,13 @@
         body > *:not(#video-section) {
             display: none;
         }
+        #player.hidden,
+  #video-section.hidden {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -21,18 +28,23 @@
             
             // Track video progress
             player.on('play', () => {
-                const interval = setInterval(() => {
+                const checkProgress = () => {
                     const duration = player.duration;
                     const currentTime = player.currentTime;
-                    const progress = (currentTime / duration) * 100;
                     
-                    if (progress >= 70) {
-                        clearInterval(interval);
+                    if (duration > 0 && currentTime / duration >= 0.7) {
                         document.body.classList.add('show-full-site');
                         // Scroll to top to show full site
                         window.scrollTo({top: 0, behavior: 'smooth'});
+                        // Hide video section
+                        document.getElementById('video-section').classList.add('hidden');
+                        // Remove listener to prevent multiple triggers
+                        player.off('timeupdate', checkProgress);
                     }
-                }, 1000);
+                };
+                
+                // Use timeupdate event instead of interval for better accuracy
+                player.on('timeupdate', checkProgress);
             });
             
             // FAQ Accordion
