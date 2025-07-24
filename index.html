@@ -88,28 +88,35 @@
         </div>
     </section>
 
-    <!-- Video Section - now with ID and full viewport height -->
-    <section id="video-section" class="min-h-screen bg-white flex items-center justify-center">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
-                <div class="aspect-w-16 aspect-h-9">
-                    <div class="w-full h-0 pb-[56.25%] relative bg-gray-300">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <button id="playButton" class="bg-purple-600 text-white rounded-full w-20 h-20 flex items-center justify-center hover:bg-purple-700 transition duration-300 transform hover:scale-110">
-                                <i class="fas fa-play text-2xl"></i>
-                            </button>
-                        </div>
-                        <iframe id="videoFrame" class="absolute inset-0 w-full h-full hidden" src="https://www.youtube.com/embed/kLFhBeOuOzw?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Assista ao vídeo e descubra como você pode começar hoje mesmo</h3>
-                    <p class="text-gray-600">Neste vídeo de 3 minutos, você vai entender exatamente como o método IA Lucrativa funciona e como pessoas comuns estão ganhando de R$1.500 a R$15.000 por mês usando apenas algumas horas do seu tempo livre.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Video Section - Corrigido com YouTube API -->
+<section id="video-section" class="min-h-screen bg-white flex items-center justify-center">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
+      <div class="aspect-w-16 aspect-h-9">
+        <div class="w-full h-0 pb-[56.25%] relative bg-gray-300">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button id="playButton" class="bg-purple-600 text-white rounded-full w-20 h-20 flex items-center justify-center hover:bg-purple-700 transition duration-300 transform hover:scale-110">
+              <i class="fas fa-play text-2xl"></i>
+            </button>
+          </div>
 
+          <!-- 🔽 LINK CORRIGIDO COM enablejsapi -->
+          <iframe id="videoFrame"
+                  class="absolute inset-0 w-full h-full hidden"
+                  src="https://www.youtube.com/embed/kLFhBeOuOzw?enablejsapi=1&rel=0"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div class="p-6 md:p-8">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Assista ao vídeo e descubra como você pode começar hoje mesmo</h3>
+        <p class="text-gray-600">Neste vídeo de 3 minutos, você vai entender exatamente como o método IA Lucrativa funciona e como pessoas comuns estão ganhando de R$1.500 a R$15.000 por mês usando apenas algumas horas do seu tempo livre.</p>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Identification Section -->
     <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
