@@ -13,6 +13,71 @@
         body > *:not(#video-section) {
             display: none;
         }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Plyr video player
+            const player = new Plyr("#player");
+            
+            // Track video progress
+            player.on('play', () => {
+                const interval = setInterval(() => {
+                    const duration = player.duration;
+                    const currentTime = player.currentTime;
+                    const progress = (currentTime / duration) * 100;
+                    
+                    if (progress >= 70) {
+                        clearInterval(interval);
+                        document.body.classList.add('show-full-site');
+                        // Scroll to top to show full site
+                        window.scrollTo({top: 0, behavior: 'smooth'});
+                    }
+                }, 1000);
+            });
+            
+            // FAQ Accordion
+            document.querySelectorAll('.faq-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqContent = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    
+                    faqContent.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+            
+            // Countdown Timer (example)
+            let countdown = 15 * 60; // 15 minutes in seconds
+            const timerElement = document.getElementById('countdown-timer');
+            
+            const updateTimer = () => {
+                const minutes = Math.floor(countdown / 60);
+                const seconds = countdown % 60;
+                
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (countdown <= 0) {
+                    clearInterval(timerInterval);
+                } else {
+                    countdown--;
+                }
+            };
+            
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer();
+            
+            // Scroll to CTA when buttons are clicked
+            document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <style>
         /* Show full site when this class is added */
         body.show-full-site > * {
             display: block !important;
@@ -96,7 +161,7 @@
             <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
                 <div class="aspect-w-16 aspect-h-9">
                     <video id="player" playsinline controls>
-                        <source src="https://sttones10.github.io/iamilionaria/video-player.mp4" type="video/mp4" />
+                        <source src="https://iamilionaria.github.io/video-player.mp4" type="video/mp4" />
                     </video>
                 </div>
                 <div class="p-6 md:p-8">
@@ -660,66 +725,5 @@
         </div>
     </footer>
 
-    <script>
-        // Initialize Plyr video player
-        const player = new Plyr("#player");
-        
-        // Track video progress
-        player.on('play', () => {
-            const interval = setInterval(() => {
-                const duration = player.duration;
-                const currentTime = player.currentTime;
-                const progress = (currentTime / duration) * 100;
-                
-                if (progress >= 70) {
-                    clearInterval(interval);
-                    document.body.classList.add('show-full-site');
-                    // Scroll to top to show full site
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                }
-            }, 1000);
-        });
-        
-        // FAQ Accordion
-        document.querySelectorAll('.faq-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqContent = button.nextElementSibling;
-                const icon = button.querySelector('i');
-                
-                faqContent.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-        
-        // Countdown Timer (example)
-        let countdown = 15 * 60; // 15 minutes in seconds
-        const timerElement = document.getElementById('countdown-timer');
-        
-        const updateTimer = () => {
-            const minutes = Math.floor(countdown / 60);
-            const seconds = countdown % 60;
-            
-            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            if (countdown <= 0) {
-                clearInterval(timerInterval);
-            } else {
-                countdown--;
-            }
-        };
-        
-        const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer();
-        
-        // Scroll to CTA when buttons are clicked
-        document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
