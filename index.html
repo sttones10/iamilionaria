@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Lucrativa - Transforme Seu Tempo Livre em Renda com Inteligência Artificial</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Hide all content initially except video section */
-        body > *:not(#video-section) {
-            display: none;
-        }
-        /* Show full site when this class is added */
-        body.show-full-site > * {
-            display: block !important;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .feature-icon {
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA Lucrativa - Transforme Seu Tempo Livre em Renda com Inteligência Artificial</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Plyr CSS (sempre no <head>) -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+  <style>
+    /* Oculta tudo inicialmente exceto a seção do vídeo */
+    body > *:not(#video-section) {
+        display: none;
+    }
+    body.show-full-site > * {
+        display: block !important;
+    }
+    .hero-gradient {
+        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+    }
+    .pulse-animation {
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .feature-icon {
+        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+  </style>
 </head>
 <body class="font-sans bg-gray-50 overflow-x-hidden m-0 p-0">
     <!-- Header -->
@@ -49,7 +56,6 @@
             </div>
         </div>
     </header>
-
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-16 md:py-24">
         <div class="container mx-auto px-4 text-center">
@@ -657,96 +663,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // YouTube API setup
-        let player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('videoFrame', {
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            document.getElementById('playButton').addEventListener('click', function() {
-                this.style.display = 'none';
-                document.getElementById('videoFrame').classList.remove('hidden');
-                event.target.playVideo();
-            });
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-                // Check progress every second
-                const interval = setInterval(() => {
-                    const duration = player.getDuration();
-                    const currentTime = player.getCurrentTime();
-                    const progress = (currentTime / duration) * 100;
-                    
-                    if (progress >= 70) {
-                        clearInterval(interval);
-                        document.body.classList.add('show-full-site');
-                        // Scroll to top to show full site
-                        window.scrollTo({top: 0, behavior: 'smooth'});
-                    }
-                }, 1000);
-            }
-        }
-
-        // Load YouTube API
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        
-        // FAQ Accordion
-        document.querySelectorAll('.faq-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqContent = button.nextElementSibling;
-                const icon = button.querySelector('i');
-                
-                faqContent.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-        
-        // Countdown Timer (example)
-        let countdown = 15 * 60; // 15 minutes in seconds
-        const timerElement = document.getElementById('countdown-timer');
-        
-        const updateTimer = () => {
-            const minutes = Math.floor(countdown / 60);
-            const seconds = countdown % 60;
-            
-            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            if (countdown <= 0) {
-                clearInterval(timerInterval);
-            } else {
-                countdown--;
-            }
-        };
-        
-        const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer();
-        
-        // Scroll to CTA when buttons are clicked
-        document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-<!-- Plyr.js CDN -->
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const player = new Plyr("#player");
@@ -754,20 +670,18 @@
     const LAST_WATCHED_KEY = "videoWatchedAt";
     const HOURS_LIMIT = 48;
 
-    const now = new Date().getTime(); // tempo atual em milissegundos
+    const now = new Date().getTime();
     const lastWatched = localStorage.getItem(LAST_WATCHED_KEY);
 
     if (lastWatched) {
       const hoursSinceLastWatch = (now - parseInt(lastWatched)) / (1000 * 60 * 60);
 
       if (hoursSinceLastWatch < HOURS_LIMIT) {
-        // Já assistiu e ainda está dentro do prazo de 48h
         document.body.classList.add("show-full-site");
         return;
       }
     }
 
-    // Ainda não assistiu ou já passou o tempo → escuta o vídeo
     player.on("timeupdate", () => {
       const currentTime = player.currentTime;
       const duration = player.duration;
@@ -778,6 +692,49 @@
         localStorage.setItem(LAST_WATCHED_KEY, now.toString());
       }
     });
+
+    // Scroll suave para CTA
+    document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    });
+
+    // FAQ Accordion
+    document.querySelectorAll(".faq-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const faqContent = button.nextElementSibling;
+        const icon = button.querySelector("i");
+
+        faqContent.classList.toggle("hidden");
+        icon.classList.toggle("rotate-180");
+      });
+    });
+
+    // Countdown Timer
+    let countdown = 15 * 60;
+    const timerElement = document.getElementById("countdown-timer");
+
+    const updateTimer = () => {
+      const minutes = Math.floor(countdown / 60);
+      const seconds = countdown % 60;
+
+      timerElement.textContent = `${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+      if (countdown <= 0) {
+        clearInterval(timerInterval);
+      } else {
+        countdown--;
+      }
+    };
+
+    const timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
   });
 </script>
 </body>
