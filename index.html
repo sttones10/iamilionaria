@@ -1,51 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Lucrativa - Transforme Seu Tempo Livre em Renda com Inteligência Artificial</title>
-
-  <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Plyr CSS (sempre no <head>) -->
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-
-  <style>
-    /* Oculta tudo inicialmente exceto a seção do vídeo */
-    body > *:not(#video-section) {
-        display: none;
-    }
-    body.show-full-site > * {
-        display: block !important;
-    }
-    .hero-gradient {
-        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-    }
-    .pulse-animation {
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-    .feature-icon {
-        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    /* Adicione isso no seu <style> no <head> */
-  .rotate-180 {
-    transform: rotate(180deg);
-  }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Lucrativa - Transforme Seu Tempo Livre em Renda com Inteligência Artificial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <style>
+        /* Hide all content initially except video section */
+        body > *:not(#video-section) {
+            display: none;
+        }
+        /* Show full site when this class is added */
+        body.show-full-site > * {
+            display: block !important;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
 </head>
-<body class="font-sans bg-gray-50 overflow-x-hidden m-0 p-0">
+<body class="font-sans bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -60,6 +51,7 @@
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-16 md:py-24">
         <div class="container mx-auto px-4 text-center">
@@ -98,23 +90,23 @@
         </div>
     </section>
 
-    <!-- Video Section com Plyr.js -->
-<section id="video-section" class="min-h-screen bg-white flex items-center justify-center">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-    <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
-      <div class="relative">
-        <video id="player" playsinline controls class="w-full rounded-md">
-          <!-- Substitua abaixo pela URL real do seu vídeo .mp4 -->
-          <source src="https://sttones10.github.io/iamilionaria/video-player.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="p-6 md:p-8">
-        <h3 class="text-xl font-bold text-gray-800 mb-4">Assista ao vídeo e descubra como você pode começar hoje mesmo</h3>
-        <p class="text-gray-600">Neste vídeo de poucos minutos, você vai entender exatamente como o método IA Lucrativa funciona e como pessoas comuns estão ganhando dinheiro usando Inteligência Artificial.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Video Section - now with ID and full viewport height -->
+    <section id="video-section" class="min-h-screen bg-white flex items-center justify-center">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
+                <div class="aspect-w-16 aspect-h-9">
+                    <video id="player" playsinline controls>
+                        <source src="https://sttones10.github.io/iamilionaria/video-player.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Assista ao vídeo e descubra como você pode começar hoje mesmo</h3>
+                    <p class="text-gray-600">Neste vídeo de 3 minutos, você vai entender exatamente como o método IA Lucrativa funciona e como pessoas comuns estão ganhando de R$1.500 a R$15.000 por mês usando apenas algumas horas do seu tempo livre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Identification Section -->
     <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
@@ -149,7 +141,7 @@
                 </div>
             </div>
             
-            <div class="mt-6 md:mt-12 text-center">
+            <div class="mt-12 text-center">
                 <p class="text-xl font-medium text-gray-800 mb-6">Se você se identificou com qualquer uma dessas situações, <span class="text-purple-600 font-bold">você está no lugar certo!</span></p>
                 <a href="#cta" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105">
                     QUERO APRENDER AGORA <i class="fas fa-arrow-right ml-2"></i>
@@ -319,7 +311,7 @@
                     </div>
                 </div>
                 
-                <div class="mt-6 md:mt-12 text-center">
+                <div class="mt-12 text-center">
                     <a href="#cta" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105">
                         QUERO COMEÇAR AGORA <i class="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -401,7 +393,7 @@
                 </div>
             </div>
             
-            <div class="mt-6 md:mt-12 text-center">
+            <div class="mt-12 text-center">
                 <a href="#cta" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105">
                     EU QUERO ESSES RESULTADOS <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -602,7 +594,7 @@
                     </div>
                 </div>
                 
-                <div class="mt-6 md:mt-12 text-center">
+                <div class="mt-12 text-center">
                     <a href="#cta" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full inline-flex items-center transition duration-300 transform hover:scale-105">
                         QUERO MEU ACESSO AGORA <i class="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -661,85 +653,73 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-6 md:mt-12 pt-8 text-center text-gray-500">
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
                 <p>© 2023 IA Lucrativa. Todos os direitos reservados.</p>
                 <p class="mt-2 text-sm">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais. Nós não vendemos o seu e-mail ou qualquer informação para terceiros. Jamais fazemos nenhum tipo de spam. Se você tiver alguma dúvida, sinta-se à vontade para usar o link de contato e falar conosco em horário comercial de Segunda a Sextas das 09h00 ás 18h00. Lemos e respondemos todas as mensagens por ordem de chegada.</p>
             </div>
         </div>
     </footer>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const player = new Plyr("#player");
 
-    const LAST_WATCHED_KEY = "videoWatchedAt";
-    const HOURS_LIMIT = 48;
-
-    const now = new Date().getTime();
-    const lastWatched = localStorage.getItem(LAST_WATCHED_KEY);
-
-    if (lastWatched) {
-      const hoursSinceLastWatch = (now - parseInt(lastWatched)) / (1000 * 60 * 60);
-
-      if (hoursSinceLastWatch < HOURS_LIMIT) {
-        document.body.classList.add("show-full-site");
-        return;
-      }
-    }
-
-    player.on("timeupdate", () => {
-      const currentTime = player.currentTime;
-      const duration = player.duration;
-      const watchedPercentage = (currentTime / duration) * 100;
-
-      if (watchedPercentage >= 70) {
-        document.body.classList.add("show-full-site");
-        localStorage.setItem(LAST_WATCHED_KEY, now.toString());
-      }
-    });
-
-    // Scroll suave para CTA
-    document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
+    <script>
+        // Initialize Plyr video player
+        const player = new Plyr("#player");
+        
+        // Track video progress
+        player.on('play', () => {
+            const interval = setInterval(() => {
+                const duration = player.duration;
+                const currentTime = player.currentTime;
+                const progress = (currentTime / duration) * 100;
+                
+                if (progress >= 70) {
+                    clearInterval(interval);
+                    document.body.classList.add('show-full-site');
+                    // Scroll to top to show full site
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            }, 1000);
         });
-      });
-    });
-
-    // FAQ Accordion
-    document.querySelectorAll(".faq-btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        const faqContent = button.nextElementSibling;
-        const icon = button.querySelector("i");
-
-        faqContent.classList.toggle("hidden");
-        icon.classList.toggle("rotate-180");
-      });
-    });
-
-    // Countdown Timer
-    let countdown = 15 * 60;
-    const timerElement = document.getElementById("countdown-timer");
-
-    const updateTimer = () => {
-      const minutes = Math.floor(countdown / 60);
-      const seconds = countdown % 60;
-
-      timerElement.textContent = `${minutes
-        .toString()
-        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-
-      if (countdown <= 0) {
-        clearInterval(timerInterval);
-      } else {
-        countdown--;
-      }
-    };
-
-    const timerInterval = setInterval(updateTimer, 1000);
-    updateTimer();
-  });
-</script>
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqContent = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                faqContent.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Countdown Timer (example)
+        let countdown = 15 * 60; // 15 minutes in seconds
+        const timerElement = document.getElementById('countdown-timer');
+        
+        const updateTimer = () => {
+            const minutes = Math.floor(countdown / 60);
+            const seconds = countdown % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (countdown <= 0) {
+                clearInterval(timerInterval);
+            } else {
+                countdown--;
+            }
+        };
+        
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+        
+        // Scroll to CTA when buttons are clicked
+        document.querySelectorAll('a[href^="#cta"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
