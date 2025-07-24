@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 overflow-x-hidden">
+<body class="font-sans bg-gray-50 overflow-x-hidden m-0 p-0">
     <!-- Header -->
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -90,7 +90,7 @@
 
     <!-- Video Section com Plyr.js -->
 <section id="video-section" class="min-h-screen bg-white flex items-center justify-center">
-  <div class="container mx-auto px-4">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
     <div class="max-w-4xl mx-auto bg-gray-100 rounded-xl overflow-hidden shadow-xl">
       <div class="relative">
         <video id="player" playsinline controls class="w-full rounded-md">
@@ -751,6 +751,23 @@
   document.addEventListener("DOMContentLoaded", function () {
     const player = new Plyr("#player");
 
+    const LAST_WATCHED_KEY = "videoWatchedAt";
+    const HOURS_LIMIT = 48;
+
+    const now = new Date().getTime(); // tempo atual em milissegundos
+    const lastWatched = localStorage.getItem(LAST_WATCHED_KEY);
+
+    if (lastWatched) {
+      const hoursSinceLastWatch = (now - parseInt(lastWatched)) / (1000 * 60 * 60);
+
+      if (hoursSinceLastWatch < HOURS_LIMIT) {
+        // Já assistiu e ainda está dentro do prazo de 48h
+        document.body.classList.add("show-full-site");
+        return;
+      }
+    }
+
+    // Ainda não assistiu ou já passou o tempo → escuta o vídeo
     player.on("timeupdate", () => {
       const currentTime = player.currentTime;
       const duration = player.duration;
@@ -758,6 +775,7 @@
 
       if (watchedPercentage >= 70) {
         document.body.classList.add("show-full-site");
+        localStorage.setItem(LAST_WATCHED_KEY, now.toString());
       }
     });
   });
